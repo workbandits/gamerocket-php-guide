@@ -5,16 +5,16 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-GameRocket_Configuration::environment('development');
-GameRocket_Configuration::apikey('b76a0c95125649dbb2eeab5713794e60');
-GameRocket_Configuration::secretkey('b59637c9427b4950bd0db43ca86a0645');
+GameRocket_Configuration::environment('production');
+GameRocket_Configuration::apikey('<use_your_apikey>');
+GameRocket_Configuration::secretkey('<use_your_secretkey>');
 
 $app = new Silex\Application();
 
 $app->get('/', function() {
-            include 'views/form.php';
-            return '';
-        });
+    include 'views/form.php';
+    return '';
+});
 
 $app->post('/create_customer', function (Request $request) {
     $result = GameRocket_Player::create(array(
@@ -46,7 +46,7 @@ $app->get('/run_action', function (Request $request) {
 
 $app->get('/unlock_content', function (Request $request) {
     $result = GameRocket_Purchase::buy('unlock-content', array(
-       'player' => 'b76a0c95125649dbb2eeab5713794e60_51b5cae784ae9c62fc60e84c' 
+       'player' => '<use_player_id>' 
     ));
     
     if ($result->success) {
