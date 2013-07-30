@@ -16,7 +16,7 @@ $app->get('/', function() {
     return '';
 });
 
-$app->post('/create_customer', function (Request $request) {
+$app->post('/create_player', function (Request $request) {
     $result = GameRocket_Player::create(array(
         'name' => $request->get('name'),
         'locale' => $request->get('locale')
