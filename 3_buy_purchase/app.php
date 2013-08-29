@@ -34,7 +34,7 @@ $app->post('/create_player', function (Request $request) {
 $app->get('/run_action', function (Request $request) {
     $result = GameRocket_Action::run('hello-world', array(
         'player' => '<use_player_id>',
-        'name' => $_GET['name']
+        'name' => $request->get('name')
     ));
     
     if ($result->success) {
@@ -44,7 +44,7 @@ $app->get('/run_action', function (Request $request) {
     }
 });
 
-$app->get('/unlock_content', function (Request $request) {
+$app->get('/unlock_content', function () {
     $result = GameRocket_Purchase::buy('unlock-content', array(
        'player' => '<use_player_id>' 
     ));
